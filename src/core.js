@@ -153,14 +153,14 @@ Promise.prototype.isRejected = function () {
   return this._state === 2;
 }
 Promise.prototype.value = function () {
-  if (!self.isFulfilled()) {
+  if (!this.isFulfilled()) {
     throw new Error('Cannot get a value of an unfulfilled promise.')
   }
 
   return this._value;
 }
 Promise.prototype.reason = function () {
-  if (!self.isRejected()) {
+  if (!this.isRejected()) {
     throw new Error('Cannot get a rejection reason of a non-rejected promise.')
   }
 
