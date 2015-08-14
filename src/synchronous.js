@@ -40,3 +40,5 @@ Promise.disableSynchronous = function() {
   Promise.prototype.getValue = undefined;
   Promise.prototype.getReason = undefined;
 };
+
+Promise.enableSynchronous();
