@@ -70,7 +70,7 @@ describe('synchronous-inspection-tests', function () {
     setTimeout(function () {
       assert(fulfilledPromise.isFulfilled());
       assert(!fulfilledPromise.isRejected());
-      assert(fulfilledPromise.getValue());
+      assert(fulfilledPromise.value());
       assert(!fulfilledPromise.isPending());
     }, 30);
   });
@@ -102,7 +102,7 @@ describe('synchronous-inspection-tests', function () {
     setTimeout(function () {
       assert(!fulfilledPromise.isFulfilled());
       assert(fulfilledPromise.isRejected());
-      assert(!fulfilledPromise.getReason());
+      assert(!fulfilledPromise.reason());
       assert(!fulfilledPromise.isPending());
     }, 30);
   });
@@ -130,7 +130,7 @@ describe('synchronous-inspection-tests', function () {
     assert(!fulfilledPromise.isRejected());
 
     try {
-      fulfilledPromise.getValue();
+      fulfilledPromise.value();
 
       assert(false);
     }
@@ -142,7 +142,7 @@ describe('synchronous-inspection-tests', function () {
 
     setTimeout(function () {
       try {
-        fulfilledPromise.getValue();
+        fulfilledPromise.value();
 
         assert(false);
       }
@@ -175,7 +175,7 @@ describe('synchronous-inspection-tests', function () {
     assert(!fulfilledPromise.isRejected());
 
     try {
-      fulfilledPromise.getReason();
+      fulfilledPromise.reason();
 
       assert(false);
     }
@@ -187,7 +187,7 @@ describe('synchronous-inspection-tests', function () {
 
     setTimeout(function () {
       try {
-        fulfilledPromise.getReason();
+        fulfilledPromise.reason();
 
         assert(false);
       }
@@ -200,8 +200,8 @@ describe('synchronous-inspection-tests', function () {
   it('can disable synchronous inspection', function() {
     Promise.enableSynchronous();
     var testPromise = Promise.resolve('someValue');
-    assert(testPromise.getValue() == 'someValue');
+    assert(testPromise.value() == 'someValue');
     Promise.disableSynchronous();
-    assert(testPromise.getValue == undefined);
+    assert(testPromise.value == undefined);
   });
 });
