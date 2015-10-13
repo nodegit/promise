@@ -1,6 +1,6 @@
 {
   "name": "nodegit-promise",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Bare bones Promises/A+ implementation with synchronous inspection",
   "main": "index.js",
   "scripts": {
