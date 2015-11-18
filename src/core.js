@@ -103,6 +103,8 @@ function handle(self, deferred) {
     var ret = tryCallOne(cb, self._value);
     if (ret === IS_ERROR) {
       reject(deferred.promise, LAST_ERROR);
+    } else if (ret && ret._state === 2) {
+      reject(deferred.promise, ret._value);
     } else {
       resolve(deferred.promise, ret);
     }
