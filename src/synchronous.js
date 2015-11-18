@@ -16,7 +16,7 @@ Promise.enableSynchronous = function () {
     return this.getState() == 2;
   };
 
-  Promise.prototype.getValue = function () {
+  Promise.prototype.getValue = Promise.prototype.value = function () {
     if (this._state === 3) {
       return this._value.getValue();
     }
@@ -28,7 +28,7 @@ Promise.enableSynchronous = function () {
     return this._value;
   };
 
-  Promise.prototype.getReason = function () {
+  Promise.prototype.getReason = Promise.prototype.reason = function () {
     if (this._state === 3) {
       return this._value.getReason();
     }
@@ -53,7 +53,11 @@ Promise.disableSynchronous = function() {
   Promise.prototype.isPending = undefined;
   Promise.prototype.isFulfilled = undefined;
   Promise.prototype.isRejected = undefined;
+  Promise.prototype.value = undefined;
   Promise.prototype.getValue = undefined;
+  Promise.prototype.reason = undefined;
   Promise.prototype.getReason = undefined;
   Promise.prototype.getState = undefined;
 };
+
+Promise.enableSynchronous();

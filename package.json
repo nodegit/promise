@@ -1,7 +1,7 @@
 {
-  "name": "promise",
   "version": "7.0.4",
-  "description": "Bare bones Promises/A+ implementation",
+  "name": "nodegit-promise",
+  "description": "Bare bones Promises/A+ implementation with synchronous inspection",
   "main": "index.js",
   "scripts": {
     "prepublish": "node build",
@@ -15,11 +15,26 @@
     "test-memory-leak": "node --expose-gc test/memory-leak.js",
     "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- --bail --timeout 200 --slow 99999 -R dot"
   },
+  "keywords": [
+    "promise",
+    "synchronous",
+    "inspection"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/then/promise.git"
+    "url": "https://github.com/nodegit/promise.git"
   },
   "author": "ForbesLindesay",
+  "contributors": [
+    {
+      "name": "John Haley",
+      "email": "johnhaley81@gmail.com"
+    },
+    {
+      "name": "Max Korp",
+      "email": "maxkorp@8bytealchemy.com"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "acorn": "^1.0.1",
