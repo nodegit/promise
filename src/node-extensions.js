@@ -17,15 +17,21 @@ Promise.denodeify = function (fn, argumentCount) {
     var args = Array.prototype.slice.call(arguments, 0,
         argumentCount > 0 ? argumentCount : 0);
     return new Promise(function (resolve, reject) {
-      args.push(function () {
-        const [err, res] = arguments;
-        // If only one argument is returned (err) then return that value.
-        // fs.exists('', fileExists => console.log(fileExists));
-        if (arguments.length === 1) {
-          resolve(err);
+      args.push(function (err, res) {
+        if (typeof arguments !== 'undefined') {
+          const [err, res] = arguments;
+          // If only one argument is returned (err) then return that value.
+          // fs.exists('', fileExists => console.log(fileExists));
+          if (arguments.length === 1 && typeof arguments[0] !== 'object') {
+            resolve(err);
+          }
+          else if (err) reject(err);
+          else resolve(res);
         }
-        else if (err) reject(err);
-        else resolve(res);
+        else {
+          if (err) reject(err);
+          else resolve(res);
+        }
       })
       var res = fn.apply(self, args);
       if (res &&
